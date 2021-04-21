@@ -1,0 +1,23 @@
+contentColumnType: string
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: hateCrime
+instructions: ''
+name: 'Hate Crime'
+searchable: true
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  allowSelfRelations: false
+  branchLimit: ''
+  limit: null
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: false
+  source: 'group:87091d82-9fe7-4375-9b77-f0baa3e55743' # Hate Crime
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

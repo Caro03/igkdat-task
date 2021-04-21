@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: auteur
+instructions: ''
+name: Auteur
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

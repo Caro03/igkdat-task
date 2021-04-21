@@ -1,0 +1,23 @@
+contentColumnType: string
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: data
+instructions: ''
+name: Data
+searchable: true
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  allowSelfRelations: false
+  branchLimit: ''
+  limit: null
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: false
+  source: 'group:6ed393a6-56df-435e-badd-27247ca77bcc' # Data
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

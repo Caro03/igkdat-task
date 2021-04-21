@@ -1,0 +1,23 @@
+contentColumnType: string
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: discriminatie
+instructions: ''
+name: Discriminatie
+searchable: true
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  allowSelfRelations: false
+  branchLimit: ''
+  limit: null
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: false
+  source: 'group:cfe8b0ba-0228-46a8-88e4-2e0211600281' # Discriminatie
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

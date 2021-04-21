@@ -1,0 +1,13 @@
+contentColumnType: boolean
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: switch
+instructions: ''
+name: Switch
+searchable: false
+settings:
+  default: false
+  offLabel: 'test 321'
+  onLabel: 'test 123'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

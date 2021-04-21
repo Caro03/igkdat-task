@@ -1,0 +1,31 @@
+{% extends "_layout" %}
+
+{% block content %}
+    
+<div class="section section--default">
+    <div class="container">
+        <div class="w-full md:w-3/4">
+            {% include '_snippet/_content/_pageTitle' %}
+        </div>
+    </div>
+</div>
+    
+<div class="section section--default">
+    <div class="container">
+        {% set domeinen = entry.domeinen %}
+        {% for domein in domeinen %}
+            <p>{{ domein.title }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="section section--default">
+    <div class="container">
+        {% set criterias = entry.criteria %}
+        {% for criteria in criterias %}
+            <p>{{ criteria.title }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

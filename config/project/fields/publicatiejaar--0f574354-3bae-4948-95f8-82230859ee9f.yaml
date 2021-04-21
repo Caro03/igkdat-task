@@ -1,0 +1,19 @@
+contentColumnType: integer(10)
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: publicatiejaar
+instructions: ''
+name: Publicatiejaar
+searchable: true
+settings:
+  decimals: 0
+  defaultValue: null
+  max: null
+  min: 0
+  prefix: null
+  previewCurrency: null
+  previewFormat: decimal
+  size: null
+  suffix: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Number
