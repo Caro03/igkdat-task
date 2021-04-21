@@ -9,23 +9,70 @@
         </div>
     </div>
 </div>
-    
+
+{% if entry.domeinen|length %}
+    <div class="section section--default">
+        <div class="container">
+            <p>{{ 'Domeinen'|t }}</p>
+            {% set domeinen = entry.domeinen %}
+            {% for domein in domeinen %}
+                <p>{{ domein.title }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if entry.criteria|length %}
+    <div class="section section--default">
+        <div class="container">
+            <p>{{ 'Criteria'|t }}</p>
+            {% set criterias = entry.criteria %}
+            {% for criteria in criterias %}
+                <p>{{ criteria.title }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
 <div class="section section--default">
     <div class="container">
-        {% set domeinen = entry.domeinen %}
-        {% for domein in domeinen %}
-            <p>{{ domein.title }}</p>
-        {% endfor %}
+        {% if entry.auteur|length %}
+            <p>{{ 'Auteur'|t }}</p>
+            {{ entry.auteur }}
+        {% endif %}
+
+        {% if entry.publicatiejaar|length %}
+            <p>{{ 'Publicatiejaar'|t }}</p>
+            {{ entry.publicatiejaar }}
+        {% endif %}
+
+        {% if entry.ligging|length %}
+        <p>{{ 'Geografische ligging'|t }}</p>
+            {% set liggings = entry.ligging %}
+                {% for ligging in liggings %}
+                    <p>{{ ligging.title }}</p>
+                {% endfor %}
+        {% endif %}
+
+        {% if entry.data|length %}
+        <p>{{ 'Soort data'|t }}</p>
+            {% set datas = entry.data %}
+                {% for data in datas %}
+                    <p>{{ data.title }}</p>
+                {% endfor %}
+        {% endif %}
     </div>
 </div>
 
 <div class="section section--default">
     <div class="container">
-        {% set criterias = entry.criteria %}
-        {% for criteria in criterias %}
-            <p>{{ criteria.title }}</p>
-        {% endfor %}
+        {% if entry.opmerkingen|length %}
+            <p>{{ 'Opmerkingen'|t }}</p>
+            {{ entry.opmerkingen }}
+        {% endif %}
     </div>
 </div>
+
+
 
 {% endblock %}
