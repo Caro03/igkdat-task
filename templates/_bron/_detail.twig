@@ -13,7 +13,7 @@
 {% if entry.criteria|length %}
     <div class="section section--default">
         <div class="container">
-            <div class="w-full p-8 bg-light">
+            <div class="w-full p-8 bg-light md:w-1/2">
                 <p class="font-bold uppercase text-primary">{{ 'Criteria'|t }}</p>
                 {% set criterias = entry.criteria %}
                 {% for criteria in criterias %}
@@ -27,7 +27,7 @@
 {% if entry.domeinen|length %}
     <div class="section section--default">
         <div class="container">
-            <div class="w-full p-8 bg-light">
+            <div class="w-full p-8 bg-light md:w-1/2">
                 <p class="font-bold uppercase text-primary">{{ 'Domeinen'|t }}</p>
                 {% set domeinen = entry.domeinen %}
                 {% for domein in domeinen %}
@@ -90,7 +90,7 @@
 
 <div class="section section--default">
     <div class="container">
-        <div class="w-full p-8 bg-light">
+        <div class="w-full p-8 bg-light md:w-1/2">
             {% if entry.opmerkingen|length %}
                 <p class="font-bold uppercase text-primary">{{ 'Opmerkingen'|t }}</p>
                 {{ entry.opmerkingen }}
