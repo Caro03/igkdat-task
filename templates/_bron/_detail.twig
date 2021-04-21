@@ -10,66 +10,92 @@
     </div>
 </div>
 
-{% if entry.domeinen|length %}
+{% if entry.criteria|length %}
     <div class="section section--default">
         <div class="container">
-            <p>{{ 'Domeinen'|t }}</p>
-            {% set domeinen = entry.domeinen %}
-            {% for domein in domeinen %}
-                <p>{{ domein.title }}</p>
-            {% endfor %}
+            <div class="w-full p-8 bg-light">
+                <p class="font-bold uppercase text-primary">{{ 'Criteria'|t }}</p>
+                {% set criterias = entry.criteria %}
+                {% for criteria in criterias %}
+                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endif %}
 
-{% if entry.criteria|length %}
+{% if entry.domeinen|length %}
     <div class="section section--default">
         <div class="container">
-            <p>{{ 'Criteria'|t }}</p>
-            {% set criterias = entry.criteria %}
-            {% for criteria in criterias %}
-                <p>{{ criteria.title }}</p>
-            {% endfor %}
+            <div class="w-full p-8 bg-light">
+                <p class="font-bold uppercase text-primary">{{ 'Domeinen'|t }}</p>
+                {% set domeinen = entry.domeinen %}
+                {% for domein in domeinen %}
+                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endif %}
 
 <div class="section section--default">
     <div class="container">
-        {% if entry.auteur|length %}
-            <p>{{ 'Auteur'|t }}</p>
-            {{ entry.auteur }}
-        {% endif %}
-
-        {% if entry.publicatiejaar|length %}
-            <p>{{ 'Publicatiejaar'|t }}</p>
-            {{ entry.publicatiejaar }}
-        {% endif %}
-
-        {% if entry.ligging|length %}
-        <p>{{ 'Geografische ligging'|t }}</p>
-            {% set liggings = entry.ligging %}
-                {% for ligging in liggings %}
-                    <p>{{ ligging.title }}</p>
-                {% endfor %}
-        {% endif %}
-
-        {% if entry.data|length %}
-        <p>{{ 'Soort data'|t }}</p>
-            {% set datas = entry.data %}
-                {% for data in datas %}
-                    <p>{{ data.title }}</p>
-                {% endfor %}
-        {% endif %}
+        <div class="w-full p-8 bg-light">
+            {% if entry.auteur|length %}
+                <p class="font-bold uppercase text-primary">{{ 'Auteur'|t }}</p>
+                {{ entry.auteur }}
+            {% endif %}
+        </div>
     </div>
 </div>
 
 <div class="section section--default">
     <div class="container">
-        {% if entry.opmerkingen|length %}
-            <p>{{ 'Opmerkingen'|t }}</p>
-            {{ entry.opmerkingen }}
-        {% endif %}
+        <div class="w-full p-8 bg-light">
+            {% if entry.publicatiejaar|length %}
+                <p class="font-bold uppercase text-primary">{{ 'Publicatiejaar'|t }}</p>
+                {{ entry.publicatiejaar }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="section section--default">
+    <div class="container">
+        <div class="w-full p-8 bg-light">
+            {% if entry.ligging|length %}
+            <p class="font-bold uppercase text-primary">{{ 'Geografische ligging'|t }}</p>
+                {% set liggings = entry.ligging %}
+                    {% for ligging in liggings %}
+                        <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ ligging.title }}</p>
+                    {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="section section--default">
+    <div class="container">
+        <div class="w-full p-8 bg-light">
+            {% if entry.data|length %}
+            <p class="font-bold uppercase text-primary">{{ 'Soort data'|t }}</p>
+                {% set datas = entry.data %}
+                    {% for data in datas %}
+                        <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ data.title }}</p>
+                    {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="section section--default">
+    <div class="container">
+        <div class="w-full p-8 bg-light">
+            {% if entry.opmerkingen|length %}
+                <p class="font-bold uppercase text-primary">{{ 'Opmerkingen'|t }}</p>
+                {{ entry.opmerkingen }}
+            {% endif %}
+        </div>
     </div>
 </div>
 
