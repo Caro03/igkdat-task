@@ -6,14 +6,14 @@ const aspectRatio = require("tailwindcss-aspect-ratio");
 
 const siteColors = {
   primary: {
-    default: "#EE4737",
+    default: "#860746",
     contrast: "#ffffff",
-    hover: "#EE4737",
+    hover: "#700E3F",
     hoverContrast: "#ffffff",
   },
   secondary: {
-    default: "#00ff00",
-    contrast: "#ffffff",
+    default: "#F9B923",
+    contrast: "#37001B",
     hover: "#00ff00",
     hoverContrast: "#ffffff",
   },
@@ -48,7 +48,7 @@ module.exports = {
       ...defaultTheme.colors,
       ...siteColors,
       black: "#333333",
-      light: "#f5f5f5",
+      light: "#EAEAEA",
       gray: {
         ...defaultTheme.colors.gray,
         100: "#f5f5f5",
