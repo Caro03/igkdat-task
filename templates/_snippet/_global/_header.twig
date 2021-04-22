@@ -1,27 +1,16 @@
 <header class="page-header">
+<div class="bg-primary">
 	<div class="container">
 		<div class="flex flex-wrap items-center justify-between py-4">
-			<a href="{{ siteUrl }}" class="">
+			<a href="{{ siteUrl }}">
 				{{ svg('@webroot/img/logo.svg')|attr({ class: 'w-full max-w-logo' }) }}
 			</a>
-
+		<div class="flex flex-wrap space-x-4">
 			{% include '_snippet/_nav/_service' %}
+			<p class="text-white">|</p>
 			{% include '_snippet/_nav/_language' %}
-			{% include '_snippet/_nav/_main' %}
-			<div class="relative flex flex-wrap items-center justify-end hidden w-full border-fade-bottom-full md:flex">
-				<div class="flex items-center js-search-hide">
-					<p>
-						This will be hidden when search is open
-					</p>
-					<button class="ml-4 cursor-pointer js-search-trigger js-search-animated">
-						<span class="sr-only">{{ 'Zoeken'|t }}</span>
-						<svg class="icon" aria-hidden="true">
-							<use xlink:href="/icon/sprite.svg#search"></use>
-						</svg>
-					</button>
-				</div>
-				{% include "_snippet/_global/_search.twig" %}
-			</div>
+		</div>
+
 			<a href="#flyout" class="text-3xl js-flyout-toggle md:hidden" role="button">
 				<span class="sr-only">Menu</span>
 				<svg class="icon" aria-hidden="true">
@@ -30,4 +19,5 @@
 			</a>
 		</div>
 	</div>
+</div>
 </header>
