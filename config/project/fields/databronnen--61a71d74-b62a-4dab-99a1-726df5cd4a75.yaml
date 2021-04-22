@@ -1,0 +1,34 @@
+contentColumnType: string
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: databronnen
+instructions: ''
+name: Databronnen
+searchable: false
+settings:
+  columns:
+    __assoc__:
+      -
+        - b20f59fb-cbdb-43bb-b1e2-cd61fdbfbfdd # Language
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+      -
+        - 45ca3f6c-5545-406e-a7ea-b5eeee0ab0fb # url
+        -
+          __assoc__:
+            -
+              - width
+              - ''
+  contentTable: '{{%stc_databronnen}}'
+  fieldLayout: row
+  maxRows: ''
+  minRows: ''
+  placeholderKey: null
+  propagationMethod: all
+  selectionLabel: ''
+  staticField: ''
+translationKeyFormat: null
+translationMethod: site
+type: verbb\supertable\fields\SuperTableField

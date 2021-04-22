@@ -1,0 +1,13 @@
+contentColumnType: boolean
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: switchDiscriminatie
+instructions: ''
+name: 'Switch Discriminatie'
+searchable: false
+settings:
+  default: false
+  offLabel: 'Ervaringen van discriminatie worden niet expliciet opgenomen'
+  onLabel: 'Ervaringen van discriminatie worden expliciet opgenomen'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

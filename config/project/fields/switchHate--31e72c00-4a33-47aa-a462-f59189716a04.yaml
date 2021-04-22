@@ -1,13 +1,13 @@
 contentColumnType: boolean
 fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
-handle: switch
+handle: switchHate
 instructions: ''
-name: Switch
+name: 'Switch Hate'
 searchable: false
 settings:
   default: false
-  offLabel: 'test 321'
-  onLabel: 'test 123'
+  offLabel: 'Hate crime/hate speech worden niet expliciet opgenomen'
+  onLabel: 'Hate crime/hate speech worden expliciet opgenomen'
 translationKeyFormat: null
 translationMethod: none
 type: craft\fields\Lightswitch

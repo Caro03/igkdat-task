@@ -14,7 +14,7 @@ new ResponsiveBackgroundComponent();
 
 import { WebfontComponent } from "./components/webfont.component";
 new WebfontComponent([
-  "https://fonts.googleapis.com/css2?family=Roboto&display=swap",
+  "https://use.typekit.net/nni3gjb.css",
 ]);
 
 /**

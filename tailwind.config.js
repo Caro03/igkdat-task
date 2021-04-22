@@ -14,8 +14,8 @@ const siteColors = {
   secondary: {
     default: "#F9B923",
     contrast: "#37001B",
-    hover: "#00ff00",
-    hoverContrast: "#ffffff",
+    hover: "#E09C00",
+    hoverContrast: "#37001B",
   },
 };
 
@@ -35,7 +35,7 @@ module.exports = {
     },
     fontFamily: {
       accent: ["serif"],
-      base: ["sans-serif"],
+      base: ["unit-rounded, sans-serif"],
     },
     screens: {
       xs: "480px",
@@ -49,6 +49,7 @@ module.exports = {
       ...siteColors,
       black: "#333333",
       light: "#EAEAEA",
+      dark: "#4E4E4E",
       gray: {
         ...defaultTheme.colors.gray,
         100: "#f5f5f5",

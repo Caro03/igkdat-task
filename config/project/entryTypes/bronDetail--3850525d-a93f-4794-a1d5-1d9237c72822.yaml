@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 1b3c5bad-c587-4fa7-8ee2-b22681e5b526 # Domeinen
+            fieldUid: f8138b44-8792-4229-be34-fb9f65e1353f # Languages
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: aad2ab0a-73f4-435a-a8a8-11dd2bff0cd3 # Criteria
+            fieldUid: 61a71d74-b62a-4dab-99a1-726df5cd4a75 # Databronnen
             instructions: null
             label: null
             required: false
@@ -44,6 +44,24 @@ fieldLayouts:
             type: craft\fieldlayoutelements\CustomField
             warning: null
             width: 100
+          -
+            fieldUid: 1b3c5bad-c587-4fa7-8ee2-b22681e5b526 # Domeinen
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: aad2ab0a-73f4-435a-a8a8-11dd2bff0cd3 # Criteria
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
           -
             fieldUid: 4aeb1f8f-367a-4385-b2e2-be984aab8dbc # Auteur
             instructions: null
@@ -90,7 +108,16 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 0a43ee03-4623-4b2f-a2b0-944273867a7c # Switch
+            fieldUid: 0a43ee03-4623-4b2f-a2b0-944273867a7c # Switch Discriminatie
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 31e72c00-4a33-47aa-a462-f59189716a04 # Switch Hate
             instructions: null
             label: null
             required: false

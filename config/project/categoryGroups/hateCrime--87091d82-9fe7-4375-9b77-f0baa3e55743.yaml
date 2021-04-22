@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 0a43ee03-4623-4b2f-a2b0-944273867a7c # Switch
+            fieldUid: 0a43ee03-4623-4b2f-a2b0-944273867a7c # Switch Discriminatie
             instructions: null
             label: null
             required: false

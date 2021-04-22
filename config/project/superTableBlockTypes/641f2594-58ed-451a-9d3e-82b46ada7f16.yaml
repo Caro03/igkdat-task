@@ -1,0 +1,94 @@
+field: 61a71d74-b62a-4dab-99a1-726df5cd4a75 # Databronnen
+fieldLayouts:
+  b00c923d-9440-41be-877d-62cdc9198f41:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: b20f59fb-cbdb-43bb-b1e2-cd61fdbfbfdd # Language
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 402c1b8b-3f30-48a9-9cc1-2dba803811e4 # Title Language
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 45ca3f6c-5545-406e-a7ea-b5eeee0ab0fb # url
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  45ca3f6c-5545-406e-a7ea-b5eeee0ab0fb: # url
+    contentColumnType: string(255)
+    fieldGroup: null
+    handle: linkit
+    instructions: ''
+    name: url
+    searchable: false
+    settings:
+      maxLength: '255'
+      placeholder: null
+      types:
+        - url
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Url
+  402c1b8b-3f30-48a9-9cc1-2dba803811e4: # Title Language
+    contentColumnType: text
+    fieldGroup: null
+    handle: titleLanguage
+    instructions: 'ex: Nederlandstalige / Franstalige / Engelstalige'
+    name: 'Title Language'
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  b20f59fb-cbdb-43bb-b1e2-cd61fdbfbfdd: # Language
+    contentColumnType: string
+    fieldGroup: null
+    handle: lang
+    instructions: ''
+    name: Language
+    searchable: false
+    settings:
+      allowLimit: false
+      allowMultipleSources: false
+      allowSelfRelations: false
+      branchLimit: '1'
+      limit: null
+      localizeRelations: false
+      selectionLabel: ''
+      showSiteMenu: false
+      source: 'group:bd143267-8f3a-417b-ad73-812931f64e91' # Talen
+      sources: '*'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Categories

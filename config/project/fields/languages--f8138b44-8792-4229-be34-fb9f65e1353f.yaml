@@ -1,0 +1,23 @@
+contentColumnType: string
+fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
+handle: languages
+instructions: ''
+name: Languages
+searchable: false
+settings:
+  allowLimit: false
+  allowMultipleSources: false
+  allowSelfRelations: false
+  branchLimit: ''
+  limit: null
+  localizeRelations: false
+  selectionLabel: ''
+  showSiteMenu: false
+  source: 'group:bd143267-8f3a-417b-ad73-812931f64e91' # Talen
+  sources: '*'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

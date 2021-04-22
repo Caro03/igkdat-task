@@ -1,100 +1,132 @@
 {% extends "_layout" %}
 
 {% block content %}
-    
+
 <div class="section section--default">
     <div class="container">
-        <div class="w-full md:w-3/4">
-            {% include '_snippet/_content/_pageTitle' %}
-        </div>
-    </div>
-</div>
+        <div class="flex flex-wrap -mx-3 -mt-8">  
+            <div class="w-full h-full px-3 mt-8 md:w-3/4">
+                {% include '_snippet/_content/_pageTitle' %}
+            </div>
 
-{% if entry.criteria|length %}
-    <div class="section section--default">
-        <div class="container">
-            <div class="w-full p-8 bg-light md:w-1/2">
-                <p class="font-bold uppercase text-primary">{{ 'Criteria'|t }}</p>
-                {% set criterias = entry.criteria %}
-                {% for criteria in criterias %}
-                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</p>
-                {% endfor %}
+            <div class="w-full h-full px-3 mt-8 md:w-1/4">
+                <div class="p-8 bg-light">
+                    <h3 class="text-primary">{{ 'Databronnen'|t }}</h3>
+                    <p class="pb-2">{{ 'De databron is beschikbaar in volgende talen:'|t }}</p>
+                    {% for row in entry.databronnen %}
+                        <div class="mb-2">
+                            <a class="link" href="{{ row.linkit }}">{{ row.titleLanguage }} {{ 'databron bekijken'|t }}</a><br>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-{% endif %}
+</div>
 
-{% if entry.domeinen|length %}
-    <div class="section section--default">
-        <div class="container">
-            <div class="w-full p-8 bg-light md:w-1/2">
-                <p class="font-bold uppercase text-primary">{{ 'Domeinen'|t }}</p>
-                {% set domeinen = entry.domeinen %}
-                {% for domein in domeinen %}
-                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</p>
-                {% endfor %}
+<div class="section section--default">
+    <div class="container">
+        <div class="flex flex-wrap -mx-3 -mt-8">
+            <div class="w-full h-full px-3 mt-8 md:w-1/2">
+                {% if entry.criteria|length %}
+                <div class="p-8 bg-light">
+                    <p class="font-bold uppercase text-primary">{{ 'Criteria'|t }}</p>
+                    {% set criterias = entry.criteria %}
+                    {% for criteria in criterias %}
+                        <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="w-full h-full px-3 mt-8 md:w-1/2">
+                {% if entry.domeinen|length %}
+                <div class="p-8 bg-light">
+                    <p class="font-bold uppercase text-primary">{{ 'Domeinen'|t }}</p>
+                    {% set domeinen = entry.domeinen %}
+                    {% for domein in domeinen %}
+                        <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</p>
+                    {% endfor %}
+                {% endif %}
+                </div>
             </div>
         </div>
     </div>
-{% endif %}
+</div>
 
 <div class="section section--default">
     <div class="container">
-        <div class="w-full p-8 bg-light">
-            {% if entry.auteur|length %}
-                <p class="font-bold uppercase text-primary">{{ 'Auteur'|t }}</p>
-                {{ entry.auteur }}
-            {% endif %}
+        <div class="flex flex-wrap -mx-3 -mt-8">
+            <div class="w-full h-full px-3 mt-8 md:w-1/4">
+                {% if entry.auteur|length %}
+                <div class="p-8 bg-light">
+                    <p class="pb-2 font-bold uppercase text-primary">{{ 'Auteur'|t }}</p>
+                    {{ entry.auteur }}
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="w-full h-full px-3 mt-8 md:w-1/4">
+                {% if entry.publicatiejaar|length %}
+                <div class="w-full h-full p-8 bg-light">
+                    <p class="pb-2 font-bold uppercase text-primary">{{ 'Publicatiejaar'|t }}</p>
+                    {{ entry.publicatiejaar }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="w-full h-full px-3 mt-8 md:w-1/4">
+                {% if entry.ligging|length %}
+                <div class="w-full h-full p-8 bg-light">
+                <p class="font-bold uppercase text-primary">{{ 'Geografische ligging'|t }}</p>
+                    {% set liggings = entry.ligging %}
+                        {% for ligging in liggings %}
+                            <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ ligging.title }}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="w-full h-full px-3 mt-8 md:w-1/4">
+                {% if entry.data|length %}
+                <div class="w-full p-8 bg-light">
+                <p class="font-bold uppercase text-primary">{{ 'Datasoort'|t }}</p>
+                    {% set datas = entry.data %}
+                        {% for data in datas %}
+                            <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ data.title }}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
 
 <div class="section section--default">
     <div class="container">
-        <div class="w-full p-8 bg-light">
-            {% if entry.publicatiejaar|length %}
-                <p class="font-bold uppercase text-primary">{{ 'Publicatiejaar'|t }}</p>
-                {{ entry.publicatiejaar }}
-            {% endif %}
-        </div>
-    </div>
-</div>
+        <div class="flex flex-wrap -mx-3 -mt-8">
+            <div class="w-full h-full px-3 mt-8 md:w-1/2">
+                {% if entry.opmerkingen|length %}
+                <div class="w-full p-8 bg-light">
+                    <p class="pb-2 font-bold uppercase text-primary">{{ 'Opmerkingen'|t }}</p>
+                    {{ entry.opmerkingen }}
+                </div>
+                {% endif %}
+            </div>
 
-<div class="section section--default">
-    <div class="container">
-        <div class="w-full p-8 bg-light">
-            {% if entry.ligging|length %}
-            <p class="font-bold uppercase text-primary">{{ 'Geografische ligging'|t }}</p>
-                {% set liggings = entry.ligging %}
-                    {% for ligging in liggings %}
-                        <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ ligging.title }}</p>
-                    {% endfor %}
-            {% endif %}
-        </div>
-    </div>
-</div>
+            <div class="w-full h-full px-3 mt-8 md:w-1/2">
+                {% if entry.switchDiscriminatie == 1 %}
+                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-light rounded-3xl"><svg class="w-4 h-4 mr-2 rounded-full icon bg-primary text-primary-contrast" aria-hidden="true"><use xlink:href="/icon/sprite.svg#check"></use></svg>{{ 'Ervaringen van discriminatie worden expliciet opgenomen'|t }}</p>
+                {% else %}
+                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-light rounded-3xl"><svg class="w-4 h-4 mr-2 rounded-full icon bg-primary text-primary-contrast" aria-hidden="true"><use xlink:href="/icon/sprite.svg#clear"></use></svg>{{ 'Ervaringen van discriminatie worden niet expliciet opgenomen'|t }}</p>
+                {% endif %}
 
-<div class="section section--default">
-    <div class="container">
-        <div class="w-full p-8 bg-light">
-            {% if entry.data|length %}
-            <p class="font-bold uppercase text-primary">{{ 'Soort data'|t }}</p>
-                {% set datas = entry.data %}
-                    {% for data in datas %}
-                        <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ data.title }}</p>
-                    {% endfor %}
-            {% endif %}
-        </div>
-    </div>
-</div>
-
-<div class="section section--default">
-    <div class="container">
-        <div class="w-full p-8 bg-light md:w-1/2">
-            {% if entry.opmerkingen|length %}
-                <p class="font-bold uppercase text-primary">{{ 'Opmerkingen'|t }}</p>
-                {{ entry.opmerkingen }}
-            {% endif %}
+                {% if entry.switchHate == 1 %}
+                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-light rounded-3xl"><svg class="w-4 h-4 mr-2 rounded-full icon bg-primary text-primary-contrast" aria-hidden="true"><use xlink:href="/icon/sprite.svg#check"></use></svg>{{ 'Hate crime/hate speech worden expliciet opgenomen'|t }}</p>
+                {% else %}
+                    <p class="inline-block px-4 py-2 text-xs font-bold uppercase bg-light rounded-3xl"><svg class="w-4 h-4 mr-2 rounded-full icon bg-primary text-primary-contrast" aria-hidden="true"><use xlink:href="/icon/sprite.svg#clear"></use></svg>{{ 'Hate crime/hate speech worden niet expliciet opgenomen'|t }}</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

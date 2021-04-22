@@ -1,5 +1,5 @@
 fieldLayouts:
-  c015e9cc-e735-4ef0-b2d1-61c64f6acd9f:
+  bf861370-6696-487d-b209-3bdb9bc552e2:
     tabs:
       -
         elements:
@@ -23,25 +23,26 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\EntryTitleField
-            warning: null
-            width: 100
-          -
-            fieldUid: b5de6dcf-80e6-48e2-b846-0dab7f35c4c8 # Intro Text
-            instructions: null
-            label: null
-            required: '0'
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
+            type: craft\fieldlayoutelements\TitleField
             warning: null
             width: 100
         name: Content
         sortOrder: 1
-handle: forgotPassword
-hasTitleField: true
-name: 'Forgot password'
-section: 1c4e3f0f-ca9b-474d-a460-48f45133c763 # Forgot password
-sortOrder: 1
-titleFormat: '{section.name|raw}'
-titleTranslationKeyFormat: null
-titleTranslationMethod: site
+handle: languages
+name: Talen
+siteSettings:
+  6de046f0-6167-4af1-aa91-ffaf83e36a14: # NL
+    hasUrls: false
+    template: null
+    uriFormat: null
+  e57cf13b-f9cb-484a-8093-a897fa43eb68: # EN
+    hasUrls: false
+    template: null
+    uriFormat: null
+  fd2014b7-5bc0-49a9-ac30-e009081532f7: # FR
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 2ff1ed1d-b759-48fb-9314-8709d1f4d091
