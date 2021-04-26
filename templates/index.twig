@@ -19,7 +19,7 @@
 {% set languagesquery = craft.app.request.getParam('languages') %}
 
 {% if criteriaquery %}
-    {% set relationParam = relationParam|merge([{ targetElement: criteriaquery, field: 'criteria' }]) %}
+    {% set relationParam = relationParam|merge([{ targetElement: criteriaquery }]) %}
 {% endif %}
 
 {% if relationParam|length > 1 %}
@@ -27,17 +27,17 @@
 {% endif %}
 
 {% if domeinenquery %}
-    {% set relationParam = relationParam|merge([{ targetElement: domeinenquery, field: 'domeinen' }]) %}
+    {% set relationParam = relationParam|merge([{ targetElement: domeinenquery }]) %}
 {% endif %}
 
 {% if languagesquery %}
-    {% set relationParam = relationParam|merge([{ targetElement: languagesquery, field: 'languages' }]) %}
+    {% set relationParam = relationParam|merge([{ targetElement: languagesquery }]) %}
 {% endif %}
 
 
 {% set totalEntries = bronnen|length %}
 
-{% paginate bronnen.limit(5) as pageInfo, bronnen %}
+{% paginate bronnen.limit(5) as pageInfo, bronEntries %}
 
 <div class="section section--default">
     <div class="container">
@@ -54,13 +54,16 @@
             </div>
             <div class="js-filter-mobile-collapse">
                 <form action="" class="js-filter-form">
+                <div class="p-10 bg-light">
+                    <h3 class="text-primary">Databronnen filteren</h3>
                     {% set criterias = craft.categories.group('criteria').all() %}
                     {% if criterias|length %}
-                        <div>
-                            <h4>{{ "Criteria"|t }}</h4>
+                        <div class="flex flex-wrap w-full space-x-16">
+                        <div class="mb-5">
+                            <h4 class="text-primary">{{ "Criteria"|t }}</h4>
                             <ul>
                                 {% for criteria in criterias %}
-                                    <li>
+                                    <li class="pb-1">
                                         <input type="checkbox" id="{{ criteria.id }}" name="criteria[]" value="{{ criteria.id }}" {% if criteria.id in criteriaquery %} checked {% endif %}/>
                                         <label for="{{ criteria.id }}">{{ criteria.title }}</label>
                                     </li>
@@ -71,26 +74,31 @@
 
                     {% set domeinen = craft.categories.group('domeinen').all() %}
                     {% if domeinen|length %}
-                        <div>
-                            <h4>{{ "Domeinen"|t }}</h4>
+                        <div class="mb-5">
+                            <h4 class="text-primary">{{ "Domeinen"|t }}</h4>
                             <ul>
                                 {% for domein in domeinen %}
-                                    <li>
+                                    <li class="pb-1">
                                         <input type="checkbox" id="{{ domein.id }}" name="domeinen[]" value="{{ domein.id }}" {% if domein.id in domeinenquery %} checked {% endif %}/>
                                         <label for="{{ domein.id }}">{{ domein.title }}</label>
                                     </li>
                                 {% endfor %}
                             </ul>
                         </div>
+                        </div>
                     {% endif %}
 
                         {% set languages = craft.categories.group('languages').all() %}
                         {% if languages|length %}
-                            <div>
-                                <h4>{{ "Talen"|t }}</h4>
+                        
+                        <div class="js-filter-show-more text-primary">
+                            <button class="underline">{{"Geavanceerd filteren"|t}}</button>
+                        </div>
+                            <div class="hidden mb-5 js-filter-extra-content">
+                                <h4 class="text-primary">{{ "Talen"|t }}</h4>
                                 <ul>
                                     {% for lang in languages %}
-                                        <li>
+                                        <li class="pb-1">
                                             <input type="checkbox" id="{{ lang.id }}" name="languages[]" value="{{ lang.id }}" {% if lang.id in languagesquery %} checked {% endif %}/>
                                             <label for="{{ lang.id }}">{{ lang.title }}</label>
                                         </li>
@@ -98,6 +106,7 @@
                                 </ul>
                             </div>
                         {% endif %}
+                    </div>
                 </form>
             </div>
         </div>
@@ -149,12 +158,12 @@
                             </thead>
                             <tbody>
 
-                                {% for bron in bronnen %}
+                                {% for bron in bronEntries %}
                                 {% if bron|length %}
                                 <tr class="{% if loop.index is even %}bg-white{% else %}bg-light{% endif %}">
                                     <td>
                                         {% if bron.title|length %}
-                                            <div class="w-64 font-bold">
+                                            <div class="w-64 pl-5 font-bold">
                                                 {{ bron.title }}
                                             </div>
                                         {% endif %}
