@@ -1,14 +1,14 @@
 {
-  "name": "Craft",
-  "short_name": "Craft",
-  "description": "Craft",
+  "name": "igkdat",
+  "short_name": "igkdat",
+  "description": "igkdat",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
   "start_url": "/?homescreen=1",
   "background_color": "#fff",
-  "theme_color": "#EE4737",
+  "theme_color": "#860746",
   "icons": [
     {
       "src": "/assets/android-chrome-36x36.png",
