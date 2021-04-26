@@ -11,142 +11,210 @@
     </div>
 </div>
 
-{% set criteriaquery = craft.app.request.getParam('criteria') %}
-{% set domeinenquery = craft.app.request.getParam('domeinen') %}
-
-{# filter topic #}
 {% set bronnen = craft.entries.section('bronDetail') %}
 {% set relationParam = ['and'] %}
 
+{% set criteriaquery = craft.app.request.getParam('criteria') %}
+{% set domeinenquery = craft.app.request.getParam('domeinen') %}
+{% set languagesquery = craft.app.request.getParam('languages') %}
+
 {% if criteriaquery %}
     {% set relationParam = relationParam|merge([{ targetElement: criteriaquery, field: 'criteria' }]) %}
-{% endif %}
-
-{# filter articleType #}
-{% if domeinenquery %}
-    {% set relationParam = relationParam|merge([{ targetElement: domeinenquery, field: 'domeinen' }]) %}
 {% endif %}
 
 {% if relationParam|length > 1 %}
     {% set bronnen = bronnen.relatedTo(relationParam) %}
 {% endif %}
 
-<div class="section section--default">
-	<div class="container">
-        <div class="px-10 py-10 bg-light">
-            <h3 class="text-primary">Databronnen filteren</h3>
-                <div class="mb-4">
-                    <h4 class="text-primary">Criteria</h4>
-                    {% set criterias = craft.categories.group('criteria').all() %}
-                <form>
-                    {% for criteria in criterias %}
-                        <input type="checkbox" id="{{ criteria.id }}" name="criteria[]" value="{{ criteria.id }}" {% if criteria.id in criteriaquery %} checked {% endif %}>
-                        <label for="{{ criteria.id }}">{{ criteria.title }}</label><br>
-                    {% endfor %}
-                </div>
+{% if domeinenquery %}
+    {% set relationParam = relationParam|merge([{ targetElement: domeinenquery, field: 'domeinen' }]) %}
+{% endif %}
 
-                <div class="mb-4">
-                    <h4 class="text-primary">Domeinen</h4>
-                    {% set domeinen = craft.categories.group('domeinen').all() %}
-                <form>
-                    {% for domein in domeinen %}
-                        <input type="checkbox" id="{{ domein.id }}" name="domeinen[]" value="{{ domein.id }}" {% if domein.id in domeinenquery %} checked {% endif %}>
-                        <label for="{{ domein.id }}">{{ domein.title }}</label><br>
-                    {% endfor %}
-                </div>
-                    <input class="btn btn--primary" type="submit" value="Filteren">
-                </form>
-                </div>   
-            </div>
-        </div>
-    </div>
-</div>
+{% if languagesquery %}
+    {% set relationParam = relationParam|merge([{ targetElement: languagesquery, field: 'languages' }]) %}
+{% endif %}
+
+
+{% set totalEntries = bronnen|length %}
+
+{% paginate bronnen.limit(5) as pageInfo, bronnen %}
 
 <div class="section section--default">
     <div class="container">
-        <table class="w-full">
-            <thead>
-                <th>
-                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
-                        {{ 'Naam databron'|t }}
-                    </div>
-                </th>
-                <th>
-                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
-                        {{ 'Jaar'|t }}
-                    </div>
-                </th>
-                <th>
-                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
-                        {{ 'Criteria'|t }}
-                    </div>
-                </th>
-                <th>
-                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
-                        {{ 'Domeinen'|t }}
-                    </div>
-                </th>
-                <th>
-                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
-                        {{ 'Talen'|t }}
-                    </div>
-                </th>
-                <th></th>
-            </thead>
-            <tbody>
-
-                {% for bron in bronnen %}
-                {% if bron|length %}
-                <tr class="{% if loop.index is even %}bg-white{% else %}bg-light{% endif %}">
-                    <td>
-                        {% if bron.title|length %}
-                            <div class="w-64 font-bold">
-                                {{ bron.title }}
-                            </div>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if bron.publicatiejaar|length %}
-                            {{ bron.publicatiejaar }}
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if bron.criteria|length %}
-                            <div class="w-64 mt-5">
-                                {% set criterias = bron.criteria %}
+        <div class="w-full">
+            <div class="md:hidden">
+                <a
+                    href="#" class="js-filter-mobile-toggle">
+                    {# This element will get the class 'open' when the filter is open #}
+                    {{ 'Filter results'|t }}
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="/icon/sprite.svg#chevron-down"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="js-filter-mobile-collapse">
+                <form action="" class="js-filter-form">
+                    {% set criterias = craft.categories.group('criteria').all() %}
+                    {% if criterias|length %}
+                        <div>
+                            <h4>{{ "Criteria"|t }}</h4>
+                            <ul>
                                 {% for criteria in criterias %}
-                                    <div class="inline-block px-4 py-2 mb-5 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</div>
+                                    <li>
+                                        <input type="checkbox" id="{{ criteria.id }}" name="criteria[]" value="{{ criteria.id }}" {% if criteria.id in criteriaquery %} checked {% endif %}/>
+                                        <label for="{{ criteria.id }}">{{ criteria.title }}</label>
+                                    </li>
                                 {% endfor %}
-                            </div>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if bron.domeinen|length %}
-                            <div>
-                                {% set domeinen = bron.domeinen %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    {% set domeinen = craft.categories.group('domeinen').all() %}
+                    {% if domeinen|length %}
+                        <div>
+                            <h4>{{ "Domeinen"|t }}</h4>
+                            <ul>
                                 {% for domein in domeinen %}
-                                    <div class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</div>
+                                    <li>
+                                        <input type="checkbox" id="{{ domein.id }}" name="domeinen[]" value="{{ domein.id }}" {% if domein.id in domeinenquery %} checked {% endif %}/>
+                                        <label for="{{ domein.id }}">{{ domein.title }}</label>
+                                    </li>
                                 {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                        {% set languages = craft.categories.group('languages').all() %}
+                        {% if languages|length %}
+                            <div>
+                                <h4>{{ "Talen"|t }}</h4>
+                                <ul>
+                                    {% for lang in languages %}
+                                        <li>
+                                            <input type="checkbox" id="{{ lang.id }}" name="languages[]" value="{{ lang.id }}" {% if lang.id in languagesquery %} checked {% endif %}/>
+                                            <label for="{{ lang.id }}">{{ lang.title }}</label>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         {% endif %}
-                    </td>
-                    <td>
-                        {% if bron.databronnen|length %}
-                            {% for talen in bron.databronnen %}
-                                <a href="{{ talen.linkit }}" class="inline-block px-4 py-2 text-xs font-bold text-white uppercase bg-primary rounded-3xl">{% set langs = talen.lang %}{% for lang in langs %}{{ lang.title }}{% endfor %}</a>
-                            {% endfor %}
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a class="mb-5 btn btn--secondary btn--ext md:mb-0" href="{{ bron.url }}">{{ 'Meer info'|t }}</a>
-                    </td>
-                </tr>
-                {% else %}
-                    <h2>There is no data yet!</h2>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="js-filter-scroll-position">
+            <div class="hidden js-filter-loader" tabindex="-1">
+                {% include '_snippet/_item/_loader' %}
+            </div>
+            <div aria-live="polite" class="sr-only js-filter-aria-live" tabindex="-1">
+                <span>{{"A total of {total} items found."|t({total: totalEntries})}}
+                </span>
+                {% if pageInfo.totalPages > 1 %}
+                    <span>{{"Showing {totalItems} items on page {currentPage} of {totalPages}."|t({totalItems: totalEntries, currentPage: pageInfo.currentPage, totalPages: pageInfo.totalPages})}}</span>
                 {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
+            </div>
+            <div class="js-filter-results">
+
+                <div class="section section--default">
+                    <div class="container">
+                        <table class="w-full">
+                            <thead>
+                                <th>
+                                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
+                                        {{ 'Naam databron'|t }}
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
+                                        {{ 'Jaar'|t }}
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
+                                        {{ 'Criteria'|t }}
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
+                                        {{ 'Domeinen'|t }}
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
+                                        {{ 'Talen'|t }}
+                                    </div>
+                                </th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+
+                                {% for bron in bronnen %}
+                                {% if bron|length %}
+                                <tr class="{% if loop.index is even %}bg-white{% else %}bg-light{% endif %}">
+                                    <td>
+                                        {% if bron.title|length %}
+                                            <div class="w-64 font-bold">
+                                                {{ bron.title }}
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if bron.publicatiejaar|length %}
+                                            {{ bron.publicatiejaar }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if bron.criteria|length %}
+                                            <div class="w-64 mt-5">
+                                                {% set criterias = bron.criteria %}
+                                                {% for criteria in criterias %}
+                                                    <div class="inline-block px-4 py-2 mb-5 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if bron.domeinen|length %}
+                                            <div>
+                                                {% set domeinen = bron.domeinen %}
+                                                {% for domein in domeinen %}
+                                                    <div class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if bron.databronnen|length %}
+                                            {% for talen in bron.databronnen %}
+                                                <a href="{{ talen.linkit }}" class="inline-block px-4 py-2 text-xs font-bold text-white uppercase bg-primary rounded-3xl">{% set langs = talen.lang %}{% for lang in langs %}{{ lang.title }}{% endfor %}</a>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a class="mb-5 btn btn--secondary btn--ext md:mb-0" href="{{ bron.url }}">{{ 'Meer info'|t }}</a>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                    <h2>There is no data yet!</h2>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                {% if pageInfo.totalPages > 1 %}
+                    <div class="js-filter-pagination">
+                        {{ craft.statik.paginate(pageInfo, {
+                        pageRange: 2,
+                        prevText: '«',
+                        nextText: '»'
+                        }) }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 
