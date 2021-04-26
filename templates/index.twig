@@ -33,31 +33,33 @@
 
 <div class="section section--default">
 	<div class="container">
-            <div class="mb-4">
-                <h3 class="form__label">Criteria</h3>
-                {% set criterias = craft.categories.group('criteria').all() %}
-            <form>
-                {% for criteria in criterias %}
-                    <input type="checkbox" id="{{ criteria.id }}" name="criteria[]" value="{{ criteria.id }}" {% if criteria.id in criteriaquery %} checked {% endif %}>
-                    <label for="{{ criteria.id }}">{{ criteria.title }}</label><br>
-                {% endfor %}
-            </div>
+        <div class="px-10 py-10 bg-light">
+            <h3 class="text-primary">Databronnen filteren</h3>
+                <div class="mb-4">
+                    <h4 class="text-primary">Criteria</h4>
+                    {% set criterias = craft.categories.group('criteria').all() %}
+                <form>
+                    {% for criteria in criterias %}
+                        <input type="checkbox" id="{{ criteria.id }}" name="criteria[]" value="{{ criteria.id }}" {% if criteria.id in criteriaquery %} checked {% endif %}>
+                        <label for="{{ criteria.id }}">{{ criteria.title }}</label><br>
+                    {% endfor %}
+                </div>
 
-            <div class="mb-4">
-                <h3 class="form__label">Domeinen</h3>
-                {% set domeinen = craft.categories.group('domeinen').all() %}
-            <form>
-                {% for domein in domeinen %}
-                    <input type="checkbox" id="{{ domein.id }}" name="domeinen[]" value="{{ domein.id }}" {% if domein.id in domeinenquery %} checked {% endif %}>
-                    <label for="{{ domein.id }}">{{ domein.title }}</label><br>
-                {% endfor %}
+                <div class="mb-4">
+                    <h4 class="text-primary">Domeinen</h4>
+                    {% set domeinen = craft.categories.group('domeinen').all() %}
+                <form>
+                    {% for domein in domeinen %}
+                        <input type="checkbox" id="{{ domein.id }}" name="domeinen[]" value="{{ domein.id }}" {% if domein.id in domeinenquery %} checked {% endif %}>
+                        <label for="{{ domein.id }}">{{ domein.title }}</label><br>
+                    {% endfor %}
+                </div>
+                    <input class="btn btn--primary" type="submit" value="Filteren">
+                </form>
+                </div>   
             </div>
-
-                <input class="btn btn--primary" type="submit" value="Filteren">
-            </form>
-        </div>   
+        </div>
     </div>
-</div>
 </div>
 
 <div class="section section--default">
@@ -65,27 +67,27 @@
         <table class="w-full">
             <thead>
                 <th>
-                    <div class="pb-2 mb-5 font-medium text-left border-b-2 border-light">
+                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
                         {{ 'Naam databron'|t }}
                     </div>
                 </th>
                 <th>
-                    <div class="pb-2 mb-5 font-medium text-left border-b-2 border-light">
+                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
                         {{ 'Jaar'|t }}
                     </div>
                 </th>
                 <th>
-                    <div class="pb-2 mb-5 font-medium text-left border-b-2 border-light">
+                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
                         {{ 'Criteria'|t }}
                     </div>
                 </th>
                 <th>
-                    <div class="pb-2 mb-5 font-medium text-left border-b-2 border-light">
+                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
                         {{ 'Domeinen'|t }}
                     </div>
                 </th>
                 <th>
-                    <div class="pb-2 mb-5 font-medium text-left border-b-2 border-light">
+                    <div class="pb-2 mb-5 text-sm font-medium text-left uppercase border-b-2 border-light">
                         {{ 'Talen'|t }}
                     </div>
                 </th>
@@ -97,36 +99,50 @@
                 {% if bron|length %}
                 <tr class="{% if loop.index is even %}bg-white{% else %}bg-light{% endif %}">
                     <td>
-                        <div class="w-64">
-                            {{ bron.title }}
-                        </div>
+                        {% if bron.title|length %}
+                            <div class="w-64 font-bold">
+                                {{ bron.title }}
+                            </div>
+                        {% endif %}
                     </td>
-                    <td>{{ bron.publicatiejaar }}</td>
                     <td>
-                        <div class="w-64 mt-5">
-                            {% set criterias = bron.criteria %}
-                            {% for criteria in criterias %}
-                                <div class="inline-block px-4 py-2 mb-5 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</div>
+                        {% if bron.publicatiejaar|length %}
+                            {{ bron.publicatiejaar }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if bron.criteria|length %}
+                            <div class="w-64 mt-5">
+                                {% set criterias = bron.criteria %}
+                                {% for criteria in criterias %}
+                                    <div class="inline-block px-4 py-2 mb-5 text-xs font-bold uppercase bg-white rounded-3xl">{{ criteria.title }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if bron.domeinen|length %}
+                            <div>
+                                {% set domeinen = bron.domeinen %}
+                                {% for domein in domeinen %}
+                                    <div class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if bron.databronnen|length %}
+                            {% for talen in bron.databronnen %}
+                                <a href="{{ talen.linkit }}" class="inline-block px-4 py-2 text-xs font-bold text-white uppercase bg-primary rounded-3xl">{% set langs = talen.lang %}{% for lang in langs %}{{ lang.title }}{% endfor %}</a>
                             {% endfor %}
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            {% set domeinen = bron.domeinen %}
-                            {% for domein in domeinen %}
-                                <div class="inline-block px-4 py-2 text-xs font-bold uppercase bg-white rounded-3xl">{{ domein.title }}</div>
-                            {% endfor %}
-                        </div>
-                    </td>
-                    <td>
-                        {% for talen in bron.databronnen %}
-                            <a href="{{ talen.linkit }}" class="inline-block px-4 py-2 text-xs font-bold text-white uppercase bg-primary rounded-3xl">{% set langs = talen.lang %}{% for lang in langs %}{{ lang.title }}{% endfor %}</a>
-                        {% endfor %}
+                        {% endif %}
                     </td>
                     <td>
                         <a class="mb-5 btn btn--secondary btn--ext md:mb-0" href="{{ bron.url }}">{{ 'Meer info'|t }}</a>
                     </td>
                 </tr>
+                {% else %}
+                    <h2>There is no data yet!</h2>
                 {% endif %}
                 {% endfor %}
             </tbody>
