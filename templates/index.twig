@@ -88,7 +88,9 @@
                         </div>
                     {% endif %}
 
-                    {% include 'search/search' %}
+                    <div class="hidden mb-5 js-filter-extra-content">
+                        {% include 'search/search' %}
+                    </div>
 
                         {% set languages = craft.categories.group('languages').all() %}
                         {% if languages|length %}
@@ -195,7 +197,6 @@
                                 <th></th>
                             </thead>
                             <tbody>
-                            {% include 'search/results' %}
                             
                                 {% for bron in bronnen %}
                                 {% if bron|length %}

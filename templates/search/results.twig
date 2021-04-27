@@ -3,6 +3,12 @@
 {% set query = craft.app.request.getParam('q') %}
 {% set bronnen = craft.entries.search(query).all() %}
 
-<h2>Search results for {{ query }}</h2>
+<h2>Search results for "{{ query }}"</h2>
+
+{% for bron in bronnen %}
+    <li>
+        {{ bron.title }}
+    </li>
+{% endfor %}
 
 {% endblock %}
