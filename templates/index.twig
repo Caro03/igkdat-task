@@ -37,7 +37,7 @@
 
 {% set totalEntries = bronnen|length %}
 
-{% paginate bronnen.limit(5) as pageInfo, bronEntries %}
+{% paginate bronnen.limit(5) as pageInfo, bronnen %}
 
 <div class="section section--default">
     <div class="container">
@@ -87,6 +87,8 @@
                         </div>
                         </div>
                     {% endif %}
+
+                    {% include 'search/search' %}
 
                         {% set languages = craft.categories.group('languages').all() %}
                         {% if languages|length %}
@@ -193,8 +195,9 @@
                                 <th></th>
                             </thead>
                             <tbody>
-
-                                {% for bron in bronEntries %}
+                            {% include 'search/results' %}
+                            
+                                {% for bron in bronnen %}
                                 {% if bron|length %}
                                 <tr class="{% if loop.index is even %}bg-white{% else %}bg-light{% endif %}">
                                     <td>
@@ -242,15 +245,13 @@
                                         <a class="mb-5 btn btn--secondary btn--ext md:mb-0" href="{{ bron.url }}">{{ 'Meer info'|t }}</a>
                                     </td>
                                 </tr>
-                                {% else %}
-                                    <h2>There is no data yet!</h2>
                                 {% endif %}
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                </div>
+            </div>
                 {% if pageInfo.totalPages > 1 %}
                     <div class="js-filter-pagination">
                         {{ craft.statik.paginate(pageInfo, {
