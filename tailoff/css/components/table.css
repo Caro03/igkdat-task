@@ -92,4 +92,9 @@
     @apply border-none;
   }
 }
+
+.table-padding td > div {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 /* purgecss end ignore */
