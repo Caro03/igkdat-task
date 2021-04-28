@@ -3,7 +3,7 @@
 {% set group = craft.app.getSites().getGroupById(currentSite.groupId) %}
 <nav class="hidden md:block js-dropdown" aria-label="{{ 'Language'|t }}">
 	<button class="js-dropdown-toggle">
-	<div class="text-white">
+	<div class="md:text-white text-primary">
 		{{currentLocal[0]|upper }}
 		<svg class="icon" aria-hidden="true">
 			<use xlink:href="/icon/sprite.svg#chevron-down"></use>

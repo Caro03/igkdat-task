@@ -5,10 +5,14 @@
 			<a href="{{ siteUrl }}">
 				{{ svg('@webroot/img/logo.svg')|attr({ class: 'w-full max-w-logo' }) }}
 			</a>
-		<div class="flex flex-wrap space-x-4">
+		<div class="md:flex md:flex-wrap md:space-x-4">
+		<div class="hidden md:flex">
 			{% include '_snippet/_nav/_service' %}
+		</div>
+		<div class="hidden md:flex md:space-x-4">
 			<p class="text-white">|</p>
 			{% include '_snippet/_nav/_language' %}
+		</div>
 		</div>
 
 			<a href="#flyout" class="text-3xl js-flyout-toggle md:hidden" role="button">
