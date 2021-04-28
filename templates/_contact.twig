@@ -6,16 +6,16 @@
 
 {% block content %}
 
-<div class="section section--default">
-    <div class="container">
-        <div class="w-full md:w-3/4">
-            {% include '_snippet/_content/_pageTitle' %}
-            {% include '_snippet/_content/_intro' %}
-        </div>
-    </div>
-</div>
+	<div class="section section--default">
+		<div class="container">
+			<div class="w-full md:w-3/4">
+				{% include '_snippet/_content/_pageTitle' %}
+				{% include '_snippet/_content/_intro' %}
+			</div>
+		</div>
+	</div>
 
-    {% include '_snippet/_content/_contentBuilder'
+	{% include '_snippet/_content/_contentBuilder'
         with {
         settings : {
             section: 'section',
@@ -23,23 +23,25 @@
         }
     } %}
 
-<div class="section section--default">
-    <div class="container">
-        {% if craft.request.getQuery('success') == 1 %}
-            <div class="font-bold text-primary">Your message has been sent!</div>
-        {% endif %}
-    </div>
-</div>
+	<div class="section section--default">
+		<div class="container">
+			{% if craft.request.getQuery('success') == 1 %}
+				<div class="font-bold text-primary">Your message has been sent!</div>
+			{% endif %}
+		</div>
+	</div>
 
-    <div class="section section--default">
-        <div class="container">
-                {{ craft.freeform.form("contactForm", {
-                    labelClass: "form__label text-white",
+	<div class="section section--default">
+		<div class="container">
+			<div class="w-full md:w-1/2">
+				{{ craft.freeform.form("contactForm", {
+                    labelClass: "form__label text-black",
                     inputClass: "form__input",
-                    submitClass: "btn btn--primary btn--ext",
+                    submitClass: "btn btn--secondary btn--ext",
                     returnUrl: "/contact?success=1",
                 }).render() }}
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}

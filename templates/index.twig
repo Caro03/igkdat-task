@@ -17,6 +17,7 @@
 	{% set criteriaquery = craft.app.request.getParam('criteria') %}
 	{% set domeinenquery = craft.app.request.getParam('domeinen') %}
 	{% set languagesquery = craft.app.request.getParam('languages') %}
+	{% set searchQuery = craft.app.request.getParam('search') %}
 
 	{% if criteriaquery %}
 		{% set relationParam = relationParam|merge([{ targetElement: criteriaquery }]) %}
@@ -34,6 +35,9 @@
 		{% set bronnen = bronnen.relatedTo(relationParam) %}
 	{% endif %}
 
+	{% if searchQuery %}
+		{% set bronnen = bronnen.search(searchQuery) %}
+	{% endif %}
 
 	{% set totalEntries = bronnen|length %}
 
@@ -89,7 +93,11 @@
 								</div>
 
 								<div class="hidden mb-5 js-filter-extra-content">
-									{% include '_snippet/_global/_search' %}
+									<div>
+										<h4 class="text-primary">{{ "Tekstueel zoeken"|t }}</h4>
+										<input class="w-1/3 form__input" type="text" name="search" placeholder="Search" value="{{searchQuery}}"/>
+										<button class="ml-2 btn btn--secondary" type="submit">{{ 'Zoeken'|t }}<svg class="w-4 h-4 ml-2 text-black icon" aria-hidden="true"><use xlink:href="/icon/sprite.svg#search"></use></svg></button>
+									</div>
 								</div>
 
 								{% set languages = craft.categories.group('languages').all() %}
@@ -221,62 +229,65 @@
 								<th></th>
 							</thead>
 							<tbody>
-                                {% set count = 0 %}
-								{% for bron in bronnen %}
-                                {% set count = count +1 %}
-									{% if bron|length %}
-										<tr class="{% if count is odd %}bg-light{% endif %}">
-											<td>
-												{% if bron.title|length %}
-													<div class="w-64 pl-5 font-bold">
-														{{ bron.title }}
-													</div>
-												{% endif %}
-											</td>
-											<td>
-												{% if bron.publicatiejaar|length %}
-													{{ bron.publicatiejaar }}
-												{% endif %}
-											</td>
-											<td>
-												{% if bron.criteria|length %}
-													<div class="w-64 mt-5">
-														{% set criterias = bron.criteria %}
-														{% for criteria in criterias %}
-															<div class="inline-block px-4 py-2 mb-5 text-xs font-bold uppercase {% if count is odd %} bg-white {% else %} bg-light {% endif %} rounded-3xl">{{ criteria.title }}</div>
-														{% endfor %}
-													</div>
-												{% endif %}
-											</td>
-											<td>
-												{% if bron.domeinen|length %}
-													<div>
-														{% set domeinen = bron.domeinen %}
-														{% for domein in domeinen %}
-															<div class="inline-block px-4 py-2 text-xs font-bold uppercase {% if count is odd %} bg-white {% else %} bg-light {% endif %} rounded-3xl">{{ domein.title }}</div>
-														{% endfor %}
-													</div>
-												{% endif %}
-											</td>
-											<td>
-												<div class="flex flex-col mr-5 -mb-2">
-													{% if bron.databronnen|length %}
-														{% for talen in bron.databronnen %}
-															<a href="{{ talen.linkit }}" class="inline-block px-4 py-2 mb-2 text-xs font-bold text-center text-white uppercase bg-primary rounded-3xl">{% set langs = talen.lang %}
-																{% for lang in langs %}
-																	{{ lang.title }}
-																{% endfor %}
-															</a>
-														{% endfor %}
+
+								{% set count = 0 %}
+								{% block search %}
+									{% for bron in bronnen %}
+										{% set count = count +1 %}
+										{% if bron|length %}
+											<tr class="{% if count is odd %}bg-light{% endif %}">
+												<td>
+													{% if bron.title|length %}
+														<div class="w-64 pl-5 font-bold">
+															{{ bron.title }}
+														</div>
 													{% endif %}
-												</div>
-											</td>
-											<td>
-												<a class="mb-5 btn btn--secondary btn--ext md:mb-0" href="{{ bron.url }}">{{ 'Meer info'|t }}</a>
-											</td>
-										</tr>
-									{% endif %}
-								{% endfor %}
+												</td>
+												<td>
+													{% if bron.publicatiejaar|length %}
+														{{ bron.publicatiejaar }}
+													{% endif %}
+												</td>
+												<td>
+													{% if bron.criteria|length %}
+														<div class="w-64 mt-5">
+															{% set criterias = bron.criteria %}
+															{% for criteria in criterias %}
+																<div class="inline-block px-4 py-2 mb-5 text-xs font-bold uppercase {% if count is odd %} bg-white {% else %} bg-light {% endif %} rounded-3xl">{{ criteria.title }}</div>
+															{% endfor %}
+														</div>
+													{% endif %}
+												</td>
+												<td>
+													{% if bron.domeinen|length %}
+														<div>
+															{% set domeinen = bron.domeinen %}
+															{% for domein in domeinen %}
+																<div class="inline-block px-4 py-2 text-xs font-bold uppercase {% if count is odd %} bg-white {% else %} bg-light {% endif %} rounded-3xl">{{ domein.title }}</div>
+															{% endfor %}
+														</div>
+													{% endif %}
+												</td>
+												<td>
+													<div class="flex flex-col mr-5 -mb-2">
+														{% if bron.databronnen|length %}
+															{% for talen in bron.databronnen %}
+																<a href="{{ talen.linkit }}" class="inline-block px-4 py-2 mb-2 text-xs font-bold text-center text-white uppercase bg-primary rounded-3xl">{% set langs = talen.lang %}
+																	{% for lang in langs %}
+																		{{ lang.title }}
+																	{% endfor %}
+																</a>
+															{% endfor %}
+														{% endif %}
+													</div>
+												</td>
+												<td>
+													<a class="mb-5 btn btn--secondary btn--ext md:mb-0" href="{{ bron.url }}">{{ 'Meer info'|t }}</a>
+												</td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+								{% endblock %}
 							</tbody>
 						</table>
 

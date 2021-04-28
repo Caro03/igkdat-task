@@ -3,7 +3,7 @@ fieldGroup: 2c770290-8edc-4f26-b846-6d99d36d7844 # Common
 handle: intro
 instructions: 'Write a short and snappy text as an introduction to the content on the page. This will probably be displayed below the page title.'
 name: 'Intro Text'
-searchable: true
+searchable: false
 settings:
   availableTransforms: '*'
   availableVolumes: '*'
@@ -18,7 +18,7 @@ settings:
   removeEmptyTags: '1'
   removeInlineStyles: '1'
   removeNbsp: '1'
-  showHtmlButtonForNonAdmins: true
+  showHtmlButtonForNonAdmins: '1'
   showUnpermittedFiles: false
   showUnpermittedVolumes: true
   uiMode: enlarged

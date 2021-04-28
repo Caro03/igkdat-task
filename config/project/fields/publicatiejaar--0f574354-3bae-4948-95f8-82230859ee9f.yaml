@@ -3,14 +3,14 @@ fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
 handle: publicatiejaar
 instructions: ''
 name: Publicatiejaar
-searchable: true
+searchable: false
 settings:
   decimals: 0
   defaultValue: null
   max: null
-  min: 0
+  min: '0'
   prefix: null
-  previewCurrency: null
+  previewCurrency: ''
   previewFormat: decimal
   size: null
   suffix: null

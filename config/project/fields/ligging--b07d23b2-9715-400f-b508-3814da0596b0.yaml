@@ -3,7 +3,7 @@ fieldGroup: fdec3457-ed33-47af-b139-c64299d91569 # Bron Detail
 handle: ligging
 instructions: ''
 name: Ligging
-searchable: true
+searchable: false
 settings:
   allowLimit: false
   allowMultipleSources: false

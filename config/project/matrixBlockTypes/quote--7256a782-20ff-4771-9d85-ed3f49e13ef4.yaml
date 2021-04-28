@@ -91,7 +91,7 @@ fields:
                 -
                   - width
                   - ''
-      contentTable: '{{%stc_6_cta}}'
+      contentTable: '{{%stc_7_cta_1}}'
       fieldLayout: matrix
       maxRows: ''
       minRows: ''
