@@ -2,7 +2,7 @@
 	<div class="py-8 bg-primary doormat">
 		<div class="container">
 			<div class="flex flex-wrap items-center -mx-4">
-				<div class="w-full px-4 mt-4 sm:w-1/2">
+				<div class="w-1/2 px-4 mt-4">
 				<div class="flex items-center space-x-5">
 					<a href="{{ siteUrl }}">
 						{{ svg('@webroot/img/logo.svg')|attr({ class: 'w-full max-w-logo' }) }}
@@ -10,8 +10,11 @@
 					<h3 class="mt-5 text-white">Datahub Racisme en Holebifobie</h3>
 				</div>
 				</div>
-				<div class="w-full px-4 mt-4 text-right sm:w-1/2">
+				<div class="flex flex-wrap items-center justify-end w-1/2 px-4 mt-4 space-x-4">
 					{% include '_snippet/_nav/_doormat' %}
+					<p class="text-white">|</p>
+					{% include '_snippet/_nav/_language' %}
+
 				</div>
 			</div>
 		</div>
