@@ -23,12 +23,21 @@
         }
     } %}
 
+<div class="section section--default">
+    <div class="container">
+        {% if craft.request.getQuery('success') == 1 %}
+            <div class="font-bold text-primary">Your message has been sent!</div>
+        {% endif %}
+    </div>
+</div>
+
     <div class="section section--default">
         <div class="container">
                 {{ craft.freeform.form("contactForm", {
                     labelClass: "form__label text-white",
                     inputClass: "form__input",
-                    submitClass: "btn btn--primary btn--ext"
+                    submitClass: "btn btn--primary btn--ext",
+                    returnUrl: "/contact?success=1",
                 }).render() }}
         </div>
     </div>
