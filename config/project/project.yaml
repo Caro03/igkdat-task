@@ -1,6 +1,6 @@
-dateModified: 1619592255
+dateModified: 1619599823
 email:
-  fromEmail: no-reply@mailer.today
+  fromEmail: caroverstreken@hotmail.com
   fromName: $SYSTEM_NAME
   replyToEmail: null
   template: _mail/_layout

@@ -48,8 +48,8 @@ new formOtherRadioComponent();
 import { GlideComponent } from "./components/glide.component";
 new GlideComponent();
 
-import { GoogleMapsComponent } from "./components/googleMaps.component";
-new GoogleMapsComponent();
+//import { GoogleMapsComponent } from "./components/googleMaps.component";
+//new GoogleMapsComponent();
 
 import { IndeterminateChecksComponent } from "./components/indeterminateChecks.component";
 new IndeterminateChecksComponent();
