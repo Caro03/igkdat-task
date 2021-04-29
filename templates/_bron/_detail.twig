@@ -8,7 +8,7 @@
             <div class="w-full h-full px-3 mt-8 md:w-3/4">
             {% set back = craft.entries.section('home') %}
             {% for b in back %}
-                <a class="pb-5 font-bold text-primary" href="{{ b.url }}">Terug naar overzicht</a>
+                <a class="pb-5 font-bold text-primary" href="{{ b.url }}">{{ 'Terug naar overzicht'|t }}</a>
             {% endfor %}
                 {% include '_snippet/_content/_pageTitle' %}
             </div>
